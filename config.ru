@@ -1,22 +1,4 @@
-require 'bundler/setup'
-require 'sinatra'
+# This file is used by Rack-based servers to start the application.
 
-module Simple
-  class Application < Sinatra::Base
-    get '/' do
-      redirect "/index.html"
-    end
-
-    get '/hello' do
-      "Hello World!"
-    end
-
-    get '/hello/:name' do
-      # matches "GET /hello/foo" and "GET /hello/bar"
-      # params[:name] is 'foo' or 'bar'
-      "Hello #{params[:name]}!"
-    end
-  end
-end
-
-run Simple::Application
+require ::File.expand_path('../config/environment',  __FILE__)
+run Rails.application
